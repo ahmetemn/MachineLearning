@@ -31,3 +31,18 @@ Y_train=sc.fit_transform(y_train)
 Y_test=sc.fit_transform(y_test)
 
 ####DOĞRUSAL MODEL İNSAŞI 
+from sklearn.linear_model import LinearRegression
+lr = LinearRegression()
+lr.fit(x_train,y_train)
+
+tahmin = lr.predict(x_test)
+
+x_train = x_train.sort_index()
+y_train = y_train.sort_index()
+
+plt.plot(x_train,y_train)
+plt.plot(x_test,lr.predict(x_test))
+
+plt.title("aylara göre satış")
+plt.xlabel("Aylar")
+plt.ylabel("Satışlar")
